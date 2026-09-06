@@ -19,13 +19,14 @@
   "scripts": {
     "build": "bundt",
     "pretest": "npm run build",
-    "postbuild": "echo \"lite\" | xargs -n1 cp -v index.d.ts",
+    "postbuild": "echo \"lite circular\" | xargs -n1 cp -v index.d.ts",
     "test": "uvu -r esm test"
   },
   "files": [
     "*.d.ts",
     "dist",
-    "lite"
+    "lite",
+    "circular"
   ],
   "exports": {
     ".": {
@@ -38,10 +39,16 @@
       "import": "./lite/index.mjs",
       "require": "./lite/index.js"
     },
+    "./circular": {
+      "types": "./index.d.ts",
+      "import": "./circular/index.mjs",
+      "require": "./circular/index.js"
+    },
     "./package.json": "./package.json"
   },
   "modes": {
     "lite": "src/lite.js",
+    "circular": "src/circular.js",
     "default": "src/index.js"
   },
   "keywords": [

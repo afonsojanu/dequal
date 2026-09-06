@@ -19,7 +19,7 @@ $ npm install --save dequal
 
 ## Modes
 
-There are two "versions" of `dequal` available:
+There are three "versions" of `dequal` available:
 
 #### `dequal`
 > **Size (gzip):** 489 bytes<br>
@@ -29,10 +29,16 @@ There are two "versions" of `dequal` available:
 > **Size (gzip):** 304 bytes<br>
 > **Availability:** [CommonJS](https://unpkg.com/dequal/lite/index.js), [ES Module](https://unpkg.com/dequal/lite/index.mjs)
 
-|  | IE9+ | Number | String | Date | RegExp | Object | Array | Class | Set | Map | ArrayBuffer | [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#TypedArray_objects) | [DataView](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) |
-|-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| `dequal` | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| `dequal/lite` | :+1: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: | :x: | :x: | :x: | :x: |
+#### `dequal/circular`
+> **Availability:** [CommonJS](https://unpkg.com/dequal/circular/index.js), [ES Module](https://unpkg.com/dequal/circular/index.mjs)
+
+Same feature set as `dequal`, but also safely handles values that contain circular references (an object or array that, directly or indirectly, points back to itself). The plain `dequal` and `dequal/lite` builds will recurse forever on such inputs, so reach for this build whenever the values you're comparing might not be a plain tree — for example, doubly-linked lists, or objects carrying a back-reference to their own parent/owner.
+
+|  | IE9+ | Number | String | Date | RegExp | Object | Array | Class | Set | Map | ArrayBuffer | [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#TypedArray_objects) | [DataView](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) | Circular refs |
+|-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| `dequal` | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: |
+| `dequal/lite` | :+1: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: | :x: | :x: | :x: | :x: | :x: |
+| `dequal/circular` | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 > <sup>**Note:** Table scrolls horizontally!</sup>
 
