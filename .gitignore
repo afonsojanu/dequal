@@ -6,3 +6,4 @@ node_modules
 
 /dist
 /lite
+/circular
